@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int debug = 0;
+int debug = 1;
 
 int main()
 {
@@ -54,7 +54,7 @@ int main()
 		}
 		else
 		{
-			mid = (sx[n/2-1]+sx[(n+2)/2-1])/2;
+			mid = (sy[n/2-1]+sx[(n+2)/2-1])/2;
 		}
 		if (debug) printf ("mid = %d\n", mid);
 		if(A > mid-(l*(n/2)))
