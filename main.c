@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int debug = 1;
+int debug = 0;
 
 int main()
 {
@@ -36,6 +36,12 @@ int main()
 					}
 			}
 		}
+		if (debug) {
+			for(b = 0; b < n; b++) {
+				printf ("%d ", sx[b]);
+		    	}
+			printf ("\n");
+		}
 		for(b = 0; b < n; b++)
 			{
 			sy[b] = sx[b] + l;
@@ -43,12 +49,12 @@ int main()
 		totalen = n*l;
 		if(n%2 !=0)
 		{
-			mid  = sx[(n+1)/2];
+			mid  = sx[(n+1)/2-1];
 
 		}
 		else
 		{
-			mid = (sx[n/2]+sx[(n+2)/2])/2;
+			mid = (sx[n/2-1]+sx[(n+2)/2-1])/2;
 		}
 		if (debug) printf ("mid = %d\n", mid);
 		if(A > mid-(l*n/2))
