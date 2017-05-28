@@ -4,13 +4,25 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../main.c 
+../main.c \
+../main_BACKUP_2621.c \
+../main_BASE_2621.c \
+../main_LOCAL_2621.c \
+../main_REMOTE_2621.c 
 
 OBJS += \
-./main.o 
+./main.o \
+./main_BACKUP_2621.o \
+./main_BASE_2621.o \
+./main_LOCAL_2621.o \
+./main_REMOTE_2621.o 
 
 C_DEPS += \
-./main.d 
+./main.d \
+./main_BACKUP_2621.d \
+./main_BASE_2621.d \
+./main_LOCAL_2621.d \
+./main_REMOTE_2621.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
