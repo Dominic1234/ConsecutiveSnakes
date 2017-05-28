@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
+
+int debug = 1;
+
 int main()
 {
 	int t, n, l, a, b, A, B, sp;
@@ -45,10 +48,12 @@ int main()
 		else if(start > A && start+totalen < B){}
 
 		sp = start;
+		if (debug) printf ("start = %d\n", start);
 		for(int b = 0; b < n; b++)
 		{
 			sum  = sum + abs(sx[b]-sp);
-			sp = sy[b]+1;
+			if (debug) printf ("snake at %d moves %d to %d\n", sx[b], abs(sx[b]-sp), sp);
+			sp += l;
 		}
 		printf("%d\n", sum);
 	}
