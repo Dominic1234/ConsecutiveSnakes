@@ -5,7 +5,7 @@ int debug = 1;
 
 int main()
 {
-	int t, n, l, a, b, A, B, sp;
+	int t, n, l, a, b, A, B, sp, change;
 	int totalen, start, sum, swap;
 	int *sx, *sy;
 	scanf("%d", &t);
@@ -17,14 +17,19 @@ int main()
 		for(b = 0; b < n; b++)
 		{
 			scanf("%d", &sx[b]);
-			if(b >0)
+		}
+		change = 1;
+		while(change){
+			for(b = 0; b < n; b++)
 			{
+				change = 0;
 				if(sx[b] > sx[b-1])
-				{
-					swap = sx[b];
-					sx[b] = sx[b-1];
-					sx[b-1] = swap;
-				}
+					{
+						swap = sx[b];
+						sx[b] = sx[b-1];
+						sx[b-1] = swap;
+						change = 1;
+					}
 			}
 		}
 		for(b = 0; b < n; b++)
