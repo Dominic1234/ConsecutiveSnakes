@@ -1,21 +1,21 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int debug = 1;
+int debug = 0;
 
 int main()
 {
-	long long t, n, l, a, b, A, B, sp, change;
-	long long start, sum, swap;
+	int t, n, l, a, b, A, B, sp, change;
+	int totalen, start, sum, swap;
 	int mid;
 	int *sx, *sy;
-	scanf("%lld", &t);
+	scanf("%d", &t);
 	for(a = 0; a < t; a++)
 	{
 		sp = 0;
 		sum = 0;
 		start = 0;
-		scanf("%lld %lld %lld %lld", &n, &l, &A, &B);
+		scanf("%d %d %d %d", &n, &l, &A, &B);
 		sx = (int*)malloc(n * sizeof(int));
 		sy = (int*)malloc(n * sizeof(int));
 		for(b = 0; b < n; b++)
@@ -24,9 +24,9 @@ int main()
 		}
 		change = 1;
 		while(change){
-			change = 0;
 			for(b = 1; b < n; b++)
 			{
+				change = 0;
 				if(sx[b] < sx[b-1])
 					{
 						swap = sx[b];
@@ -46,6 +46,7 @@ int main()
 			{
 			sy[b] = sx[b] + l;
 			}
+		totalen = n*l;
 		if(n%2 !=0)
 		{
 			mid  = sx[(n+1)/2-1];
@@ -53,33 +54,41 @@ int main()
 		}
 		else
 		{
-			mid = (sy[n/2-1]+sx[(n+2)/2-1])/2;
+			mid = (sx[n/2-1]+sx[(n+2)/2-1])/2;
 		}
+<<<<<<< HEAD
+		if(A > mid-(l*n/2))
+		{
+			start = A;
+		}
+		else if(B < mid+(l*(n+1)/2))
+=======
 		if (debug) printf ("mid = %d\n", mid);
 		if(A > mid-(l*(n/2)))
 		{
 			start = A;
-			if (debug) printf ("Adjusting start due to left overlap. New = %lld\n", start);
+			if (debug) printf ("Adjusting start due to left overlap. New = %d\n", start);
 		}
 		else if(B < mid+((n+1)/2*l))
+>>>>>>> 465b0a57902f93815e82832a47ce07a9e7ab76b8
 		{
-			start = mid-(n/2*l) - (mid+((n+1)/2*l) - B) + 1;
-			if (debug) printf ("Adjusting start due to right overlap. New = %lld\n", start);
+			start = mid-(n/2*l) - (mid+((n+1)/2*l) - B);
+			if (debug) printf ("Adjusting start due to right overlap. New = %d\n", start);
 		}
 		else
 		{
 			start = mid-(n/2*l);
 		}
 		sp = start;
-		if (debug) printf ("start = %lld\n", start);
+		if (debug) printf ("start = %d\n", start);
 		for(b = 0; b < n; b++)
 		 {
 		 sum  = sum + abs(sx[b]-sp);
-		 if (debug) printf ("snake at %lld moves %lld to %lld\n", sx[b], abs(sx[b]-sp), sp);
+		 if (debug) printf ("snake at %d moves %d to %d\n", sx[b], abs(sx[b]-sp), sp);
 		 	sp += l;
 		}
 		if (debug) printf ("=== Answer = ");
-		printf("%lld\n", sum);
+		printf("%d\n", sum);
 			free(sx);
 			free(sy);
 	}
