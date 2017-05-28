@@ -24,9 +24,9 @@ int main()
 		}
 		change = 1;
 		while(change){
+			change = 0;
 			for(b = 1; b < n; b++)
 			{
-				change = 0;
 				if(sx[b] < sx[b-1])
 					{
 						swap = sx[b];
