@@ -1,43 +1,55 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main()
 {
-	int t, n, l, a, b,closest;
-	int totalen, start, sum;
-	int *sx, *sy, *d;
+	int t, n, l, a, b, A, B, sp;
+	int totalen, start, sum, swap;
+	int *sx, *sy;
 	scanf("%d", &t);
-	for(int a = 0; a < t; a++)
+	for(a = 0; a < t; a++)
 	{
-		scanf("%d %d %d %d", &n, &l, &a, &b);
+		scanf("%d %d %d %d", &n, &l, &A, &B);
 		sx = (int*)malloc(n * sizeof(int));
 		sy = (int*)malloc(n * sizeof(int));
-		d = (int*)malloc(n * sizeof(int));
-		for(int b = 0; b < n; b++)
+		for(b = 0; b < n; b++)
 		{
 			scanf("%d", &sx[b]);
-			sy[b] = sx[b] + l;
+			if(b >0)
+			{
+				if(sx[b] > sx[b-1])
+				{
+					swap = sx[b];
+					sx[b] = sx[b-1];
+					sx[b-1] = swap;
+				}
+			}
 		}
+		for(b = 0; b < n; b++)
+			{
+			sy[b] = sx[b] + l;
+			}
 		totalen = n*l;
-		for(int b = 0; b < n; b++)
+		for(b = 0; b < n; b++)
 		{
 			start = start + sx[b];
 		}
 		start = start/n;
-		if(start > a && start+totalen > b)
+		if(start > A && start+totalen > B)
 		{
-			start = start - ((start+totalen)-b);
+			start = start - ((start+totalen)-B);
 		}
-		else if(start < a)
+		else if(start < A)
 		{
-			start = a;
+			start = A;
 		}
-		else if(start > a && start+totalen < b){}
-		for(int b = 0; b < n-1; b++)
+		else if(start > A && start+totalen < B){}
+
+		sp = start;
+		for(int b = 0; b < n; b++)
 		{
-			if(abs(sx[b] - n) > abs(sx[b+1] - n))
-			{
-				closest = b+1;
-			}
-			else closest = b;
+			sum  = sum + abs(sx[b]-sp);
+			sp = sy[b]+1;
 		}
+		printf("%d\n", sum);
 	}
 }
