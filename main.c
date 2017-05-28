@@ -41,29 +41,6 @@ int main()
 			sy[b] = sx[b] + l;
 			}
 		totalen = n*l;
-		/*for(b = 0; b < n; b++)
-		{
-			start = start + sx[b];
-		}
-		start = start/n;
-		if(start > A && start+totalen > B)
-		{
-			start = start - ((start+totalen)-B);
-		}
-		else if(start < A)
-		{
-			start = A;
-		}
-		else if(start > A && start+totalen < B){}
-
-		sp = start;
-		if (debug) printf ("start = %d\n", start);
-		for(int b = 0; b < n; b++)
-		{
-			sum  = sum + abs(sx[b]-sp);
-			if (debug) printf ("snake at %d moves %d to %d\n", sx[b], abs(sx[b]-sp), sp);
-			sp += l;
-		}*/
 		if(n%2 !=0)
 		{
 			mid  = sx[(n+1)/2];
@@ -73,13 +50,16 @@ int main()
 		{
 			mid = (sx[n/2]+sx[(n+2)/2])/2;
 		}
-		if(a > mid-(l*n/2))
+		if (debug) printf ("mid = %d\n", mid);
+		if(A > mid-(l*n/2))
 		{
-			start = a;
+			start = A;
+			if (debug) printf ("Adjusting start due to left overlap. New = %d\n", start);
 		}
-		else if(b < mid+(l*(n+1)/2))
+		else if(B < mid+(l*(n+1)/2))
 		{
-			start = mid-(l*n/2) - (mid+(l*(n+1)/2) - b);
+			start = mid-(l*n/2) - (mid+(l*(n+1)/2) - B);
+			if (debug) printf ("Adjusting start due to right overlap. New = %d\n", start);
 		}
 		else
 		{
