@@ -64,7 +64,7 @@ int main()
 		}
 		else if(B < mid+((n+1)/2*l))
 		{
-			start = mid-(n/2*l) - (mid+((n+1)/2*l) - B);
+			start = mid-(n/2*l) - (mid+((n+1)/2*l) - B) + 1;
 			if (debug) printf ("Adjusting start due to right overlap. New = %d\n", start);
 		}
 		else
