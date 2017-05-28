@@ -50,11 +50,11 @@ int main()
 		{
 			mid = (sx[n/2]+sx[(n+2)/2])/2;
 		}
-		if(a > mid-(l*n/2))
+		if(A > mid-(l*n/2))
 		{
-			start = a;
+			start = A;
 		}
-		else if(b < mid+(l*(n+1)/2))
+		else if(B < mid+(l*(n+1)/2))
 		{
 			start = mid-(l*n/2) - (mid+(l*(n+1)/2) - b);
 		}
@@ -64,7 +64,7 @@ int main()
 		}
 		sp = start;
 		if (debug) printf ("start = %d\n", start);
-		for(int b = 0; b < n; b++)
+		for(b = 0; b < n; b++)
 		 {
 		 sum  = sum + abs(sx[b]-sp);
 		 if (debug) printf ("snake at %d moves %d to %d\n", sx[b], abs(sx[b]-sp), sp);
